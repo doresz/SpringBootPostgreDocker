@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang=en xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Sign Up - CodeJava</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" th:href="@{favicon.ico}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/vendor/bootstrap/css/bootstrap.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/vendor/animate/animate.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/vendor/css-hamburgers/hamburgers.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/vendor/select2/select2.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/css/util.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/css/main.css}">
+    <link rel="stylesheet" th:href="@{/styles/index.css}">
+    <link rel="stylesheet" th:href="@{/styles/indexszuro.css}">
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/styles/indexszuro.css}">
+    <link rel="stylesheet" th:href="@{/styles/index.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script th:src="@{/js/indexszuro.js}"></script>
+    <script th:src="@{/js/index.js}"></script>
+</head>
+
+<body>
+    <div class="container text-center">
+        <div><br><br>
+            <h1>User Login - Sign In</h1>
+        </div>
+                <div class="col-sm-3">
+                <div style="padding-top:12px;">
+                    <a class="btn btn-block btn-social btn-facebook customBtn" th:href="@{/auth/facebook}">
+                        <span class="fa fa-facebook width42px"></span> Sign in with Facebook
+                    </a>
+
+                    <a class="btn btn-block btn-social btn-google customBtn" th:href="@{/auth/google}">
+                        <span class="fa fa-google width42px"></span> Sign in with Google
+                    </a>
+
+                    <a class="btn btn-block btn-social btn-twitter customBtn" th:href="@{/auth/twitter}">
+                        <span class="fa fa-twitter width42px"></span> Sign in with Twitter
+                    </a>
+
+                    <a class="btn btn-block btn-social btn-linkedin customBtn" th:href="@{/auth/linkedin}">
+                        <span class="fa fa-linkedin width42px"></span> Sign in with LinkedIn
+                    </a>
+
+                </div>
+                </div>
+        <form th:action="@{/j_spring_security_check}" method="post" style="max-width: 600px; margin: 0 auto;">
+            <div class="m-3">
+                <div>
+                    <label class="col-4 col-form-label">Email: </label>
+                    <div class="wrap-input100 validate-input">
+                        <input type="email" class="form-control" required name="username" />
+                    </div>
+                </div>
+
+                <div>
+                    <label class="col-4 col-form-label">Password: </label>
+                    <div class="wrap-input100 validate-input">
+                        <input type="password" class="form-control" required minlength="6" maxlength="10" name="password" />
+                    </div>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" type="submit">Sign In</button>
+                </div><br>
+                <div class="text-center p-t-12">
+                    <span class="txt1">
+							Forgot
+						</span>
+                    <a class="txt2" th:href="@{forgotPassword}">
+							Username / Password?
+						</a><br><br>
+						          <a class="txt2" href="/signup">
+							Create your Account
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+        </form>
+        </div>
+</body>
+
+</html>

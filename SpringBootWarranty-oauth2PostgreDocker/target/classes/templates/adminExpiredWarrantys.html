@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang=en xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <header th:replace="adminmenu.html :: navbar"></header>
+</head>
+
+<body>
+    <div class="container text-center">
+        <div>
+            <h1>List of Warrantys</h1>
+        </div>
+        <div>
+            <table id="myTable" class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>location</th>
+                        <th>expiration date</th>
+                        <th>update</th>
+                        <th>download</th>
+						<th>delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="waranty:${listWaranty}">
+                        <td th:text="${waranty.id}">id</td>
+                        <td th:text="${waranty.name}">name</td>
+                        <td th:text="${waranty.location}">location</td>
+                        <td th:text="${waranty.expirationDate}">expiration date</td>
+                        <td><a th:href="@{/update/{id}(id=${waranty.id})}">update</a></td>
+                        <td><a th:href="@{/imageDownload/{id}(id=${waranty.id})}">download</a></td>
+                        <td><a th:href="@{/deleteWarrantyLink/{id}(id=${waranty.id})}">delete</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </form>
+    </div>
+</body>
+
+</html>

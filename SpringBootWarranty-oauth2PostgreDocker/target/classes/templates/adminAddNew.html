@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- Load font awesome icons -->
+<!--<link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+<link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/styles/indexszuro.css}">
+<link rel="stylesheet" th:href="@{/styles/index.css}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script th:src="@{/js/indexszuro.js}"></script>
+<script th:src="@{/js/index.js}"></script>-->
+<!--<div class="topnav" id="myTopnav">
+    <a class="active" href="#home" th:href="@{/admin}">Users</a>
+    <a th:href="@{/adminValidWarrantys}">Valid warrantys</a>
+    <a th:href="@{/adminAddNewGet}">Add new element</a>
+    <a th:href="@{/adminExpiredWarrantys}">Expired warrantys</a>
+    <a th:href="@{/logout}">Logout</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <em class="fa fa-bars"></em>
+    </a>
+</div>-->
+
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js}"></script>
+<script th:src="@{/js/fileuploaddeletebutton.js}"></script>
+
+<head>
+    <header th:replace="adminmenu.html :: navbar"></header>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>File Upload Servlet JSP JDBC MySQL Example</title>
+</head>
+
+<body>
+    <div class="container col-lg-6"><br>
+        <h1 class="text-center">Upload warranty</h1>
+        <div class="card">
+            <div class="card-body">
+                <form th:action="@{/adminAddNew}" th:object="${waranty}" method="post" class="form-group" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="name">name: </label> <input type="text" class="form-control" name="name" th:field="*{name}" size="50" />
+                    </div>
+                    <div class="form-group">
+                        <label for="location">location: </label> <input type="text" class="form-control" name="location" th:field="*{location}" size="50" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exp date">expiration date: </label> <input type="date" class="form-control" name="expirationdate" th:field="*{expirationDate}" size="50" />
+                    </div><br>
+                    <div class="form-group">
+                        <label class="btn btn-primary"><i class="fa fa-image"></i>Choose file(s)<input type="file" style="display: none;" name="file" id="file" size="50" multiple required/>
+                            </label>
+                        <div id="midiaDigital"></div>
+                    </div>
+                    <input type="submit" value="Save" class="btn btn-success">
+                </form>
+            </div>
+        </div>
+        <script>
+            function FileDetails() {
+
+                // GET THE FILE INPUT.
+                var fi = document.getElementById('file');
+
+                // VALIDATE OR CHECK IF ANY FILE IS SELECTED.
+                if (fi.files.length > 0) {
+
+                    // THE TOTAL FILE COUNT.
+                    document.getElementById('fp').innerHTML =
+                        'Total Files: <b>' + fi.files.length + '</b></br >';
+
+                    // RUN A LOOP TO CHECK EACH SELECTED FILE.
+                    for (var i = 0; i <= fi.files.length - 1; i++) {
+                        reader.onload = function(e) {
+                            var fname = fi.files.item(i).name; // THE NAME OF THE FILE.
+                            var fsize = fi.files.item(i).size; // THE SIZE OF THE FILE.
+
+                            // SHOW THE EXTRACTED DETAILS OF THE FILE.
+                            document.getElementById('fp').innerHTML =
+                                document.getElementById('fp').innerHTML + '<br /> ' +
+                                fname + ' (<b>' + fsize + '</b> bytes)';
+                        }
+                    }
+                } else {
+                    alert('Please select a file.')
+                }
+                $(midiaDigital).on("click", ".remove_field1", function(e) { //user click on remove text
+                    e.preventDefault();
+                    $(this).parent('div').remove();
+                    img.val('');
+                })
+            }
+        </script>
+</body>

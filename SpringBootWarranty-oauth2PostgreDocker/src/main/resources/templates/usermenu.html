@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- Load font awesome icons -->
+
+<body>
+    <div th:fragment="navbar" class="topnav" id="myTopnav">
+        <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+        <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{/styles/indexszuro.css}">
+        <link rel="stylesheet" th:href="@{/styles/index.css}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script th:src="@{/js/indexszuro.js}"></script>
+        <script th:src="@{/js/index.js}"></script>
+        <div class="topnav" id="myTopnav">
+            <a th:href="@{/addNew}" class="active">Home</a>
+            <a href="#add" th:href="@{/warantys}">Valid warantys</a>
+            <a href="#add" th:href="@{/expired}">Expired warantys</a>
+            <a th:href="@{/logout}">Logout</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <em class="fa fa-bars"></em>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

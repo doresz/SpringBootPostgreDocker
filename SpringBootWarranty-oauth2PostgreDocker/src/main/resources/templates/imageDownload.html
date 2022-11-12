@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang=en xmlns:th="http://www.thymeleaf.org">
+<TITLE>Download Images</TITLE>
+
+<head>
+    <header th:replace="usermenu.html :: navbar"></header>
+    <meta charset="ISO-8859-1">
+    <title>List Users</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<BODY>
+    <form><br>
+        <h3><b>Download images</b></h3><br>
+        <th:block th:each="files:${images}">
+            <div style="display:inline-block">
+                <div>
+                    <a href="@{/displayImage/{id}(id=${files.id})}"><img th:src="@{${'/displayImage/'+files.id}}" style="width:100px" alt="Image not found">
+
+                </div>
+                <div>
+                    <a th:href="@{/download/{id}(id=${files.id})}">[[${files.name}]]</a>
+                </div>
+            </div>
+        </th:block>
+        <input type="hidden" th:value="${warrantyId}">
+    </form>
+
+</BODY>
+
+</HTML>

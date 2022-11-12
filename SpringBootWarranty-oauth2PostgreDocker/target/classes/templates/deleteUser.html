@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <header th:replace="adminmenu.html :: navbar"></header>
+    <meta charset="ISO-8859-1">
+    <title>List Users</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <form th:action="@{/confirmDeleteUser/{email}(email=${user.userName})}" th:object="${user}">
+        <label th:field="*{userName}">Are you sure you delete username = <strong>[[${user.userName}]]?</strong></label>
+        <input type="hidden" th:field="*{userName}" th:value="${userName}" name="username">
+        <input type="submit" value="Delete" class="btn btn-success">
+    </form>
+
+</body>
+
+</html>

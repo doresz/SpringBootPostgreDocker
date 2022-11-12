@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js}"></script>
+<script th:src="@{/js/fileuploaddeletebutton.js}"></script>
+
+<head>
+    <header th:replace="usermenu.html :: navbar"></header>
+    <meta charset="ISO-8859-1">
+    <title>List Users</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <body><br>
+        <h3>Successfully update!</h3><br>
+        <form method="post" class="form-group" th:action="@{fileupdate}" enctype="multipart/form-data" th:object="${waranty}">
+            <input type="hidden" name="id" th:value="${id}" th:field="*{id}">
+            <div class="form-group">
+                <label class="btn btn-primary"><i class="fa fa-image"></i>Choose file(s)<input type="file" style="display: none;" name="file" id="file" size="50" multiple required/>
+                    </label>
+                <div id="midiaDigital"></div>
+            </div><br>
+            <input type="submit" value="Save" class="btn btn-success">
+        </form><br>
+        <a th:href="@{/addNew}">"Go back to home page!"</a>
+
+    </body>

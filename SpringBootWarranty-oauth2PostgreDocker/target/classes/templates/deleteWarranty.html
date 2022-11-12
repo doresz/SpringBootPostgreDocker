@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <header th:replace="adminmenu.html :: navbar"></header>
+    <meta charset="ISO-8859-1">
+    <title>List Users</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <form method="get" th:action="@{/confirmDeleteWarranty}" th:object="${waranty}">
+        <div>
+            <table id="myTable" class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>location</th>
+                        <th>expiration date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="warantys:${waranty}">
+                        <td th:text="${warantys.id}">id</td>
+                        <td th:text="${warantys.name}">name</td>
+                        <td th:text="${warantys.location}">location</td>
+                        <td th:text="${warantys.expirationDate}">expiration date</td>
+                        <input type="hidden" th:value="${warantys.id}" name="id">
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <strong>Are you sure you want to delete the warranty above?</strong>
+
+        <input type="submit" value="Delete" class="btn btn-success">
+    </form>
+
+</body>
+
+</html>

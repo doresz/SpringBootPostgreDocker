@@ -1,0 +1,41 @@
+version: "3.8"
+services:
+  warrantycontainer:
+    image: mysql
+    environment:
+      #- MYSQL_ROOT_PASSWORD=mypassword
+      #- MYSQL_DATABASE=warranty
+      #- MYSQL_USER=warrantydb
+      #- MYSQL_PASSWORD=1234
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQL_DATABASE
+      - MYSQL_USER=$MYSQL_USER
+      - MYSQL_PASSWORD=$MYSQL_PASSWORD
+    #volumes:
+      #- C://Users/HP/Desktop/mysqldatadocker:/var/lib/mysql
+    volumes:
+        - type: bind
+          source: /c/users/hp/desktop/mysqldatadocker
+          target: /var/lib/mysql/
+    ports:
+    - $MYSQL_PORT:$MYSQL_PORT
+      #- 3306:3306
+  oauth2w:
+    image: springbootoauth2dock:latest
+    depends_on:
+      - warrantycontainer
+    ports:
+    - $APPLICATION_PORT:$APPLICATION_PORT
+      #- 8080:8080
+    expose:
+    - $EXPOSE_PORT
+      #- 3306
+    environment:
+      #- spring_datasource_url=jdbc:mysql://warrantycontainer:3306/warranty
+      #- spring_datasource_username=warrantydb
+      #- spring_datasource_password=1234
+      - spring_datasource_url=$SPRING_DATASOURCE_URL
+      - spring_datasource_username=$SPRING_DATASOURCE_USERNAME
+      - spring_datasource_password=$SPRING_DATASOURCE_PASSWORD
+
+  

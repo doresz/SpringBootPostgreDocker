@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!--<meta charset="ISO-8859-1">
+    <title>List Users</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/styles/indexszuro.css}">
+    <link rel="stylesheet" th:href="@{/styles/index.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/js/indexszuro.js"></script>
+    <script src="/js/index.js"></script>
+    <div class="topnav" id="myTopnav">
+        <a class="active" href="#home" th:href="@{/admin}">Users</a>
+        <a th:href="@{/adminValidWarrantys}">Valid warrantys</a>
+        <a th:href="@{/adminAddNewGet}">Add new element</a>
+        <a th:href="@{/adminExpiredWarrantys}">Expired warrantys</a>
+        <a th:href="@{/logout}">Logout</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+        <input type="text" id="myInput" onkeyup="myFunctionQuery()" placeholder="Search for names..">
+    </div>-->
+    <header th:replace="adminmenu.html :: navbar"></header>
+</head>
+
+<body>
+    <div class="container text-center">
+        <div>
+            <h1>List of Users</h1>
+        </div>
+        <div>
+            <table id="myTable" class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>id</th>
+                        <th>email</th>
+                        <th>firstname</th>
+                        <th>lastname</th>
+                        <th>edit user's warrantys</th>
+                        <th>delete user</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user:${users}">
+                        <td th:text="${user.userId}">id</td>
+                        <td th:text="${user.userName}">name</td>
+                        <td th:text="${user.firstName}">location</td>
+                        <td th:text="${user.lastName}">expiration date</td>
+                        <td><a th:href="@{/edit/{email}(email=${user.userName})}">edit warrantys</a></td>
+                        <td><a th:href="@{/deleteUser/{email}(email=${user.userName})}">delete user</a></td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        </form>
+    </div>
+</body>
+
+</html>

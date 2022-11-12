@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <header th:replace="usermenu.html :: navbar"></header>
+    <meta charset="ISO-8859-1">
+    <title>List Users</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <strong>Download failed!</strong><br><br>
+    <input type="text" name="exception" th:value="${exception}" th:field="*{exception}">
+</body>
+
+</html>

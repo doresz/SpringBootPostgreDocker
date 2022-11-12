@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang=en xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Sign Up - CodeJava</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" th:href="@{favicon.ico}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/vendor/bootstrap/css/bootstrap.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/vendor/animate/animate.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/vendor/css-hamburgers/hamburgers.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/vendor/select2/select2.min.css}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/css/util.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/css/main.css}">
+    <link rel="stylesheet" th:href="@{/styles/index.css}">
+    <link rel="stylesheet" th:href="@{/styles/indexszuro.css}">
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/styles/indexszuro.css}">
+    <link rel="stylesheet" th:href="@{/styles/index.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script th:src="@{/js/indexszuro.js}"></script>
+    <script th:src="@{/js/index.js}"></script>
+    <div class="topnav" id="myTopnav">
+        <a class="active" href="#home" th:href="@{/}">Login</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <em class="fa fa-bars"></em>
+        </a>
+    </div>
+</head>
+
+<body>
+    <div class="container text-center">
+        <div>
+            <h1>User Registration - Sign Up</h1>
+        </div>
+        <h3>[[${message}]]</h3>
+        <div class="col-sm-6">
+
+            <h2 th:if="${myForm.signInProvider != null}">Signup with <span th:utext="${myForm.signInProvider}"></span></h2>
+
+            <div class="alert alert-danger" th:if="${errorMessage != null}" th:text="${errorMessage}"></div>
+            <form th:action="@{/signup}" th:object="${myForm}" method="POST" style="max-width: 600px; margin: 0 auto;">
+                <input type="hidden" th:field="*{userId}" />
+                <input type="hidden" th:field="*{signInProvider}">
+                <div class="m-3">
+                    <!--<div>
+                        <label class="col-4 col-form-label">E-mail: </label>
+                        <div class="wrap-input100 validate-input">
+                            <input type="text" class="form-control" id="email" th:field="*{email}">
+                            <BR/>
+                            <div class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                            </div>
+                        </div>
+                    </div>-->
+                    <div>
+                        <label class="col-4 col-form-label">Email: </label>
+                        <div class="wrap-input100 validate-input">
+                            <input type="text" class="form-control" id="usernameTxt" th:field="*{userName}">
+                            <BR/>
+                            <div class="alert alert-danger" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">..
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="col-4 col-form-label">Password: </label>
+                        <div class="wrap-input100 validate-input">
+                            <input type="password" class="form-control" id="pwd" th:field="*{password}">
+                            <BR/>
+                            <div class="alert alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">..
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="col-4 col-form-label">First Name: </label>
+                        <div class="wrap-input100 validate-input">
+                            <input type="text" class="form-control" id="firstName" th:field="*{firstName}">
+                            <BR/>
+                            <div class="alert alert-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="col-4 col-form-label">Last Name: </label>
+                        <div class="wrap-input100 validate-input">
+                            <input type="text" class="form-control" id="lastName" th:field="*{lastName}">
+                            <BR/>
+                            <div class="alert alert-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" type="submit">Sign Up</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+</body>
+
+</html>

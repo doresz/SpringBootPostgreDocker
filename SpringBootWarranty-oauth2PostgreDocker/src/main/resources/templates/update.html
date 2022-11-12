@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <header th:replace="usermenu.html :: navbar"></header>
+    <meta charset="ISO-8859-1">
+    <title>List Users</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <strong>[[${message}]]</strong>
+    <div class="container col-lg-6"><br><br>
+        <h1 class="text-center">Update</h1>
+        <div class="card">
+            <div class="card-body">
+                <form method="post" th:action="@{/updateTrial}" th:object="${waranty}">
+                    <div class="form-group">
+                        <label for="name">name: </label> <input type="text" class="form-control" name="name" th:field="*{name}" size="50" />
+                    </div>
+                    <div class="form-group">
+                        <label for="location">location: </label> <input type="text" class="form-control" name="location" th:field="*{location}" size="50" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exp date">expiration date: </label> <input type="date" class="form-control" name="expirationdate" th:field="*{expirationDate}" size="50" />
+                    </div>
+                    <input type="submit" style="text-align:center" value="Save" class="btn btn-success">
+                    <br>
+                    <br>
+                    <input type="hidden" name="foreignkey" th:field="*{foreignKey}">
+                    <input type="hidden" name="id" th:field="*{id}">
+                    <input type="hidden" name="expired" th:field="*{expired}">
+                    <br>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
